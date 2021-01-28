@@ -22,7 +22,6 @@ python:
 sudo: required
 
 install:
-  - pip install -r requirements.txt
   - pip install python-coveralls
   - pip install pytest
   - python setup.py install
