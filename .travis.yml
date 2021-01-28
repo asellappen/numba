@@ -21,6 +21,7 @@ python:
 
 sudo: required
 before_install:
+  - sudo apt-get install libllvm-10-ocaml-dev libllvm10 llvm-10 llvm-10-dev llvm-10-doc llvm-10-examples llvm-10-runtime
   - pip install llvmlite
 install:
   - pip install python-coveralls
