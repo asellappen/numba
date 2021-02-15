@@ -42,4 +42,5 @@ install:
 script:
   - sh buildscripts/incremental/build.sh
   - sh buildscripts/incremental/test.sh
-  
+  - flake8 numba
+  - mypy
