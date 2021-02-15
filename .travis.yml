@@ -24,7 +24,7 @@ before_install:
   #- sudo apt-get install llvm
   - sudo apt-get install llvm-10*
   - export LLVM_CONFIG=/usr/bin/llvm-config-10
-  - sudo pip install llvmlite==0.36.0dev0
+  - sudo pip install llvmlite==0.35.0
 
 install:
   - pip install python-coveralls
@@ -32,6 +32,6 @@ install:
  # - python setup.py install
   - pip install --no-deps -e .
 script:
-  - python -m pytest numba/tests/
-  - python -m pytest numba/testing/
+ # - python -m pytest numba/tests/
+  - python -m pytest -raR --maxfail=50 numba/testing/   
   - coverage run run_coverage.py
