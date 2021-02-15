@@ -23,6 +23,7 @@ sudo: required
 before_install:
   #- sudo apt-get install llvm
   - sudo apt-get install llvm-10*
+  - export LLVM_CONFIG=/usr/bin/llvm-config-10
   - sudo pip install llvmlite==0.35.0
 
 install:
