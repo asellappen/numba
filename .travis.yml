@@ -22,7 +22,7 @@ python:
 sudo: required
 before_install:
   - sudo apt-get install llvm
-  - sudo pip install llvmlite==0.36.0
+  - sudo pip install llvmlite==0.35.0
 
 install:
   - pip install python-coveralls
