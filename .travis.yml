@@ -21,26 +21,17 @@ python:
 
 sudo: required
 before_install:
-install:
-  - if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then 
-        wget https://repo.anaconda.com/miniconda/Miniconda2-latest-Linux-ppc64le.sh -O miniconda.sh;
-    else
-        wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-    fi
-  - bash miniconda.sh -b -p $HOME/miniconda
-  - export PATH="$HOME/miniconda/bin:$PATH"
-  - hash -r
-  - conda config --set always_yes yes
-  - conda config --set auto_update_conda False
-  - conda update -q --all
-  - conda install  numpy flake8 pytest
-  - conda install -y mypy
+  #- sudo apt-get install llvm
+  #- sudo apt-get install llvm-10*
+  #- export LLVM_CONFIG=/usr/bin/llvm-config-10
+  #- sudo pip install llvmlite==0.35.0
 
 install:
-  - pip install --no-deps -e .  
-  - python setup.py install
+  - pip install python-coveralls
+  - pip install pytest
+ # - python setup.py install
+  - pip install --no-deps -e .
 script:
-  - sh buildscripts/incremental/build.sh
-  - sh buildscripts/incremental/test.sh
-  - flake8 numba
-  - mypy
+  - python -m pytest numba/tests/
+  - python -m pytest numba/testing/
+  - coverage run run_coverage.py
