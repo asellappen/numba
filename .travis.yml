@@ -29,9 +29,13 @@ before_install:
 install:
   - pip install python-coveralls
   - pip install pytest
+  - pip install flake8
+  - pip install mypy
  # - python setup.py install
   - pip install --no-deps -e .
 script:
  # - python -m pytest numba/tests/
-  - python -m pytest -raR --maxfail=50 numba/testing/   
-  - coverage run run_coverage.py
+  - python -m numba.runtests -l  
+  - flake8 numba
+  - mypy
+  - coverage run runtests.py
