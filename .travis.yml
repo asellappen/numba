@@ -35,8 +35,8 @@ install:
  # - python setup.py install
   - pip install --no-deps -e .
 script:
- # - python -m pytest numba/tests/
-  - python -m numba.runtests -l  
+  - python -m pytest numba/tests/
+ # - python -m numba.runtests -l  
   - flake8 numba
   - mypy
   - coverage run runtests.py
