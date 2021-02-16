@@ -29,7 +29,7 @@ before_install:
   - pip install "llvmlite==0.35.0"
 install:
   - pip install python-coveralls
-  - pip install pytest
+  - pip install pytest jinja2 cffi
   - pip install flake8
   - pip install mypy
  # - python setup.py install
