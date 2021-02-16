@@ -25,8 +25,8 @@ before_install:
   - sudo apt-get install llvm-10*
   - export LLVM_CONFIG=/usr/bin/llvm-config-10
   - ln -s /usr/include/llvm-10/llvm/Config/llvm-config.h config.h
-  - sudo pip install llvmlite==0.35.0
-
+#  - sudo pip install llvmlite==0.35.0
+  - pip install "llvmlite==0.31.0"
 install:
   - pip install python-coveralls
   - pip install pytest
