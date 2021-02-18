@@ -36,7 +36,7 @@ before_install:
   - conda config --set auto_update_conda False
   - conda update -q --all
   - conda install python=3.7 pip
-  - conda install pytest jinja2 cffi  flake8 mypy
+  - conda install pytest jinja2 cffi  flake8 mypy numpy
   - pip install python-coveralls
   - conda install llvmlite==0.35.0
   - sudo apt-get install llvm-10* 
