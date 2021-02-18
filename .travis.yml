@@ -38,7 +38,6 @@ before_install:
   - conda install python=3.7 pip
   - conda install pytest jinja2 cffi  flake8 mypy
   - pip install python-coveralls
-  - conda install -c anaconda llvm
   - conda install llvmlite==0.35.0
   - sudo apt-get install llvm-10* 
   - export LLVM_CONFIG=/usr/bin/llvm-config-10
