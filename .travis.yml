@@ -48,9 +48,8 @@ before_install:
 install:
   - pip install --no-deps -e .
 script:
-  - sh -x buildscripts/incremental/test.sh
- # - python -m pytest -v numba/tests/
- # - python -m numba.runtests -l  
- # - flake8 numba
- # - mypy
- # - coverage run runtests.py
+  - python -m pytest -v numba/tests/
+  - python -m numba.runtests -l  
+  - flake8 numba
+  - mypy
+  - coverage run runtests.py
