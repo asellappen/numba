@@ -2,7 +2,7 @@
 #
 # Package             : numba
 # Source Repo         : https://github.com/numba/numba
-# Travis Job Link     : https://travis-ci.com/github/asellappen/PyMySQL/
+# Travis Job Link     : https://travis-ci.com/github/asellappen/numba/
 # Created travis.yml  : Yes
 # Maintainer          : Arumugam N S <asellappen@yahoo.com> / Priya Seth<sethp@us.ibm.com>
 #
@@ -48,8 +48,9 @@ before_install:
 install:
   - pip install --no-deps -e .
 script:
-  - python -m pytest -v numba/tests/
-  - python -m numba.runtests -l  
-  - flake8 numba
-  - mypy
-  - coverage run runtests.py
+  - sh -x buildscripts/incremental/test.sh
+ # - python -m pytest -v numba/tests/
+ # - python -m numba.runtests -l  
+ # - flake8 numba
+ # - mypy
+ # - coverage run runtests.py
