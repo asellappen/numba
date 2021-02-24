@@ -35,7 +35,7 @@ before_install:
   - conda config --set always_yes yes
   - conda config --set auto_update_conda False
   - conda update -q --all
-  - conda install python=3.7 pip
+  - conda install python=3.7 pip  pytest-xdist
   - conda install pytest jinja2 cffi  flake8 mypy numpy
   #- sudo apt-get install llvm-10*
   - pip install python-coveralls --no-cache-dir
@@ -50,7 +50,7 @@ before_install:
 install:
   - pip install --no-deps -e .
 script:
-  - python -m pytest -rxXsv numba/tests/ --ignore=numba/tests/test_alignment.py
+  - python -m pytest -v -n 3 numba/tests/
   - python -m numba.runtests -l  
   - flake8 numba
   - mypy
