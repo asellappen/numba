@@ -25,7 +25,7 @@ before_install:
 before_install:
   - sudo apt-get install gfortran libopenblas-dev liblapack-dev
   - if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then 
-        wget https://repo.anaconda.com/miniconda/Miniconda2-latest-Linux-ppc64le.sh -O miniconda.sh;
+        wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-ppc64le.sh -O miniconda.sh;
     else
         wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
     fi
@@ -44,7 +44,6 @@ before_install:
   - ln -s /usr/include/llvm-10/llvm/Config/llvm-config.h config.h
   - sudo apt-get install llvm-10 lldb-10 llvm-10-dev libllvm10 llvm-10-runtime
  
-
 install:
   - pip install --no-deps -e .
 script:
