@@ -40,10 +40,11 @@ before_install:
   - sudo apt-get install llvm-10*
   - pip install python-coveralls --no-cache-dir
   #- conda install llvmlite==0.35.0
+  - sudo apt-get install llvm-10 lldb-10 llvm-10-dev libllvm10 llvm-10-runtime
   - pip install llvmlite==0.36.0rc1 --no-cache-dir
   - export LLVM_CONFIG=/usr/bin/llvm-config-10
   - ln -s /usr/include/llvm-10/llvm/Config/llvm-config.h config.h
-  - sudo apt-get install llvm-10 lldb-10 llvm-10-dev libllvm10 llvm-10-runtime
+ # - sudo apt-get install llvm-10 lldb-10 llvm-10-dev libllvm10 llvm-10-runtime
  
 install:
   - pip install --no-deps -e .
