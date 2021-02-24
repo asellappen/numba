@@ -47,7 +47,7 @@ before_install:
 install:
   - pip install --no-deps -e .
 script:
-  - python -m pytest - -rxXsv numba/tests/ --ignore=numba/tests/test_alignment.py --ignore=numba/tests/test_annotations.py --ignore=numba/tests/test_array_analysis.py;
+  - python -m pytest -rxXsv numba/tests/ --ignore=numba/tests/test_alignment.py --ignore=numba/tests/test_annotations.py --ignore=numba/tests/test_array_analysis.py;
   - python -m numba.runtests -l  
   - flake8 numba
   - mypy
