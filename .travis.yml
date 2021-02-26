@@ -63,4 +63,4 @@ script:
 # - travis_wait 30 python -m numba.runtests -l  
   - flake8 numba
   - mypy
-  - coverage run runtests.py
+# - coverage run runtests.py
