@@ -11,14 +11,15 @@
 # ----------------------------------------------------------------------------
 language: python
 dist: focal
-python : 3.7
-sudo: required
+python : 3.6
 
 matrix:
-  fast_finish: true
   include:
+  - env: PYTHON_VERSION="3.6"
   - env: PYTHON_VERSION="3.7"
   - env: PYTHON_VERSION="3.8"
+  - env: PYTHON_VERSION="3.6"
+    arch: ppc64le
   - env: PYTHON_VERSION="3.7"
     arch: ppc64le
   - env: PYTHON_VERSION="3.8"
@@ -39,23 +40,12 @@ before_install:
   - conda update -q --all
   - conda install python=$PYTHON_VERSION pip  pytest-xdist
   - conda install pytest jinja2 cffi  flake8 mypy numpy
-  #- sudo apt-get install llvm-10*
   - pip install python-coveralls --no-cache-dir
-  #- conda install llvmlite==0.35.0
   - conda install llvmlite==0.36.0rc1  -c numba
-  #- sudo apt-get install llvm-10 lldb-10 llvm-10-dev libllvm10 llvm-10-runtime
-  #- pip install llvmlite==0.36.0rc1  --no-cache-dir
-  #- export LLVM_CONFIG=/usr/bin/llvm-config-10
-  #- ln -s /usr/include/llvm-10/llvm/Config/llvm-config.h config.h
- # - sudo apt-get install llvm-10 lldb-10 llvm-10-dev libllvm10 llvm-10-runtime
- 
+
 install:
   - pip install --no-deps -e .
 script:
-  -   python -m numba.runtests -j 9296 -m
-# -  pytest -v -n 3 -k test_a -k test_b  -k test_c -k test_d --ignore=numba/tests/test_exceptions.py::TestRaising::test_assert_statement_nopython --ignore=numba/tests/test_array_analysis.py::TestArrayAnalysis::test_base_cases  numba/tests/ 
-# - travis_wait 30 python -m pytest -v -n 3 runtests.py
-# - travis_wait 30 python -m numba.runtests -l  
+  - python -m numba.runtests -j 9373 -m
   - flake8 numba
   - mypy
-# - coverage run runtests.py
