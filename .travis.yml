@@ -57,9 +57,9 @@ before_install:
 install:
   - pip install --no-deps -e .
 script:
-  -  pytest -v -n 3 -k test_a tests/
-#  - travis_wait 30 python -m pytest -v -n 3 runtests.py
- # - travis_wait 30 python -m numba.runtests -l  
+  -  pytest -v -n 3 -k test_a numba/tests/
+# - travis_wait 30 python -m pytest -v -n 3 runtests.py
+# - travis_wait 30 python -m numba.runtests -l  
   - flake8 numba
   - mypy
   - coverage run runtests.py
