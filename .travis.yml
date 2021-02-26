@@ -58,9 +58,9 @@ install:
   - pip install --no-deps -e .
 script:
 
--  pytest -v -n 3 -k test_a -k test_b numba/tests/ --ignore numba/tests/test_exceptions.py::TestRaising::test_assert_statement_nopython --ignore  numba/tests/test_array_analysis.py::TestArrayAnalysis::test_base_cases
--  pytest -v -n 3 -k test_c -k test_d numba/tests/
--  pytest -v -n 3 -k test_c -k test_[d-f] numba/tests/
+-  pytest -v -n 3 -k test_a -k test_b numba/tests/ -k test_c -k test_d --ignore numba/tests/test_exceptions.py::TestRaising::test_assert_statement_nopython --ignore  numba/tests/test_array_analysis.py::TestArrayAnalysis::test_base_cases
+-  pytest -v -n 3 -k test_e -k test_f -k test_g -k test_h -k test_i numba/tests/
+-  pytest -v -n 3 -k test_j -k test_k numba/tests/
 # - travis_wait 30 python -m pytest -v -n 3 runtests.py
 # - travis_wait 30 python -m numba.runtests -l  
   - flake8 numba
