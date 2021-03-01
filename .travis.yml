@@ -31,18 +31,6 @@ before_install:
 
 install:
   - pip install --no-deps -e .
-#script:
- # - python -m numba.runtests -j 0,4500,2 -m 
- # - python -m numba.runtests -j 1,4500,2 -m 
- # - python -m numba.runtests -j 4501,9300,2 -m
- # - python -m numba.runtests -j 4502,9300,2 -m 
- # - python -m numba.runtests -j 950,None,2 -m
- # - travis_wait 30 python -m numba.runtests -m
- 
-_shared_job: &shared_job
-  script: 
-  - flake8 numba
-  - mypy
 jobs:
   include:
     - stage: unit test1
@@ -81,11 +69,62 @@ jobs:
       env: PYTHON_VERSION="3.7"
       script: 
       - python -m numba.runtests -j 4502,9300,2 -m 
-    - name: OtherTests for amd64
+    - stage: OtherTests for amd64
       env: PYTHON_VERSION="3.7"
-      - <<: *shared_job
-    - name: OtherTests for ppc64le
+      script: 
+        - flake8 numba
+        - mypy
+    - stage: OtherTests for ppc64le
       env: PYTHON_VERSION="3.7"
       arch: ppc64le
-      - <<: *shared_job
-        
+      script: 
+        - flake8 numba
+        - mypy
+ # for python 3.8
+     - stage: unit test1
+      env: PYTHON_VERSION="3.8"
+      script: 
+      - python -m numba.runtests -j 0,4500,2 -m 
+    - stage: unit test2
+      env: PYTHON_VERSION="3.8"
+      script: 
+      - python -m numba.runtests -j 1,4500,2 -m
+    - stage: unit test3
+      env: PYTHON_VERSION="3.8"
+      script: 
+      - python -m numba.runtests -j 4501,9300,2 -m
+    - stage: unit test4
+      env: PYTHON_VERSION="3.8"
+      script: 
+      - python -m numba.runtests -j 4502,9300,2 -m
+    - stage: unit test1
+      arch: ppc64le
+      env: PYTHON_VERSION="3.8"
+      script: 
+      - python -m numba.runtests -j 0,4500,2 -m 
+    - stage: unit test2
+      arch: ppc64le
+      env: PYTHON_VERSION="3.8"
+      script: 
+      - python -m numba.runtests -j 1,4500,2 -m
+    - stage: unit test3
+      arch: ppc64le
+      env: PYTHON_VERSION="3.8"
+      script: 
+      - python -m numba.runtests -j 4501,9300,2 -m
+    - stage: unit test4
+      arch: ppc64le
+      env: PYTHON_VERSION="3.8"
+      script: 
+      - python -m numba.runtests -j 4502,9300,2 -m 
+    - stage: OtherTests for amd64
+      env: PYTHON_VERSION="3.8"
+      script: 
+        - flake8 numba
+        - mypy
+    - stage: OtherTests for ppc64le
+      env: PYTHON_VERSION="3.8"
+      arch: ppc64le
+      script: 
+        - flake8 numba
+        - mypy
