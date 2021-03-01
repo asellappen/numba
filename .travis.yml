@@ -11,15 +11,6 @@
 # ----------------------------------------------------------------------------
 language: python
 dist: focal
-
-arch:
-  - amd64
-  - ppc64le
-
-python:
-  env: PYTHON_VERSION="3.7"
-  env: PYTHON_VERSION="3.8"
-  
 before_install:
   - sudo apt-get install gfortran libopenblas-dev liblapack-dev
   - if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then 
@@ -43,18 +34,97 @@ install:
 jobs:
   include:
     - stage: unit test1
+      env: PYTHON_VERSION="3.7"
       script: 
       - python -m numba.runtests -j 0,4500,2 -m 
     - stage: unit test2
+      env: PYTHON_VERSION="3.7"
       script: 
       - python -m numba.runtests -j 1,4500,2 -m
     - stage: unit test3
+      env: PYTHON_VERSION="3.7"
       script: 
       - python -m numba.runtests -j 4501,9300,2 -m
     - stage: unit test4
+      env: PYTHON_VERSION="3.7"
       script: 
       - python -m numba.runtests -j 4502,9300,2 -m
-    - stage: Other Tests
+    - stage: unit test1
+      arch: ppc64le
+      env: PYTHON_VERSION="3.7"
+      script: 
+      - python -m numba.runtests -j 0,4500,2 -m 
+    - stage: unit test2
+      arch: ppc64le
+      env: PYTHON_VERSION="3.7"
+      script: 
+      - python -m numba.runtests -j 1,4500,2 -m
+    - stage: unit test3
+      arch: ppc64le
+      env: PYTHON_VERSION="3.7"
+      script: 
+      - python -m numba.runtests -j 4501,9300,2 -m
+    - stage: unit test4
+      arch: ppc64le
+      env: PYTHON_VERSION="3.7"
+      script: 
+      - python -m numba.runtests -j 4502,9300,2 -m 
+    - stage: OtherTests for amd64
+      env: PYTHON_VERSION="3.7"
+      script: 
+        - flake8 numba
+        - mypy
+    - stage: OtherTests for ppc64le
+      env: PYTHON_VERSION="3.7"
+      arch: ppc64le
+      script: 
+        - flake8 numba
+        - mypy
+ # for python 3.8
+    - stage: unit test1
+      env: PYTHON_VERSION="3.8"
+      script: 
+      - python -m numba.runtests -j 0,4500,2 -m 
+    - stage: unit test2
+      env: PYTHON_VERSION="3.8"
+      script: 
+      - python -m numba.runtests -j 1,4500,2 -m
+    - stage: unit test3
+      env: PYTHON_VERSION="3.8"
+      script: 
+      - python -m numba.runtests -j 4501,9300,2 -m
+    - stage: unit test4
+      env: PYTHON_VERSION="3.8"
+      script: 
+      - python -m numba.runtests -j 4502,9300,2 -m
+    - stage: unit test1
+      arch: ppc64le
+      env: PYTHON_VERSION="3.8"
+      script: 
+      - python -m numba.runtests -j 0,4500,2 -m 
+    - stage: unit test2
+      arch: ppc64le
+      env: PYTHON_VERSION="3.8"
+      script: 
+      - python -m numba.runtests -j 1,4500,2 -m
+    - stage: unit test3
+      arch: ppc64le
+      env: PYTHON_VERSION="3.8"
+      script: 
+      - python -m numba.runtests -j 4501,9300,2 -m
+    - stage: unit test4
+      arch: ppc64le
+      env: PYTHON_VERSION="3.8"
+      script: 
+      - python -m numba.runtests -j 4502,9300,2 -m 
+    - stage: OtherTests for amd64
+      env: PYTHON_VERSION="3.8"
+      script: 
+        - flake8 numba
+        - mypy
+    - stage: OtherTests for ppc64le
+      env: PYTHON_VERSION="3.8"
+      arch: ppc64le
       script: 
         - flake8 numba
         - mypy
