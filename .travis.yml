@@ -81,7 +81,7 @@ jobs:
         - flake8 numba
         - mypy
  # for python 3.8
-     - stage: unit test1
+    - stage: unit test1
       env: PYTHON_VERSION="3.8"
       script: 
       - python -m numba.runtests -j 0,4500,2 -m 
