@@ -11,8 +11,6 @@
 # ----------------------------------------------------------------------------
 language: python
 dist: focal
-python : 3.6
-
 matrix:
   include:
   - env: PYTHON_VERSION="3.6"
@@ -46,7 +44,9 @@ before_install:
 install:
   - pip install --no-deps -e .
 script:
-  - python -m numba.runtests -j 950,None,2 -m
+   - python -m numba.runtests -j 0,None,2 -m 
+   - python -m numba.runtests -j 1,None,2 -m
+ # - python -m numba.runtests -j 950,None,2 -m
  # - travis_wait 30 python -m numba.runtests -m
   - flake8 numba
   - mypy
