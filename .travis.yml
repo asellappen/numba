@@ -87,5 +87,5 @@ jobs:
     - stage: OtherTests for ppc64le
       env: PYTHON_VERSION="3.7"
       arch: ppc64le
-        - <<: *shared_job
+      - <<: *shared_job
         
